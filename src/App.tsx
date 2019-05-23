@@ -1,14 +1,18 @@
 import React from 'react';
+import { Route } from 'react-router-dom'
 
-import { TodoList } from './components/index'
+import { GlobalProvider, TodoItemEdit, TodoList } from './components/index'
 
 import './App.css';
 
-const App: React.FC = () => {
+const App: React.FC = (props: any): JSX.Element => {
   return (
     <div className="App">
-      <TodoList />
-    </div>
+      <GlobalProvider>
+        <Route exact path='/' component={TodoList} />
+      </GlobalProvider>
+        <Route path='/:id' component={TodoItemEdit} />
+      </div>
   );
 }
 
